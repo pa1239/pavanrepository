@@ -17,3 +17,4 @@ REFERENCES REGULATORY_REPORTING_CODES (CODE);
 https://stackoverflow.com/questions/18368168/configuration-junit-4-in-spring-eclipse
 https://www.petrikainulainen.net/programming/spring-framework/unit-testing-of-spring-mvc-controllers-configuration/
 http://tutorials.jenkov.com/java-unit-testing/running-tests-with-ant.html
+https://codebeautify.org/jsontoxml
