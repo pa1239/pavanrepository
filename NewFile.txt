@@ -112,7 +112,13 @@ Caused by: java.lang.NullPointerException
 14/05/2018 23:50:47,857 ERROR [org.hibernate.util.JDBCExceptionReporter] Column 'DESCRIPTION' cannot be null
 14/05/2018 23:50:47,857 INFO  [org.perf4j.TimingLogger] start[1526341847854] time[3] tag[LedgerAccountServiceImpl.createLedgerGroup(..).failure] message[INVOICE_346]
  
- 
+ CREATE TABLE `ledger_group` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `NUMBER` int(10) unsigned NOT NULL,
+  `DESCRIPTION` varchar(100) NOT NULL,
+  `PARENT_NO` int(10) unsigned DEFAULT NULL,
+  `COMPANY_ID` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`ID`),
 Thanks & Regards,
 Akthar Hussaini S
 OFS
