@@ -126,3 +126,26 @@ We Build Software. And Trust.
 
 Disclaimer : http://www.objectfrontier.com/maildisclaimer.html
 ===========================================================================================================================
+<![CDATA[
+             SELECT INV.INVOICE_ID AS invoiceId, INV.CUSTOMER_ID AS customerId,
+             PN.PERSON_NAME AS customerName, INV.INVOICE_DATE AS invoiceDate,
+             INV.INVOICE_DUE_DATE AS dueDate,
+             (SELECT INS.STATUS FROM INVOICE_STATUS INS WHERE INS.INVOICE_STATUS_ID = INV.INVOICE_STATUS_ID)
+             AS status, INV.TOTAL_AMOUNT AS amount, SUM(INP.PAID_AMOUNT) AS paidAmount, INV.TOTAL_EXC_TAX AS amountExcTax,
+             INV.OFFER_NO AS offerNo, INV.OFFER_DUE_DATE AS offerDueDate, INV.INVOICE_NO AS invoiceNo,
+             INV.CREDIT_NOTE_NO AS creditNoteNo, INV.DRAFT_NO AS draftNo, C.CURRENCY_CODE AS currencyCode,
+             EHF.VALIDATION_INFO as validationInfo, INV.PURCHASE_ORDER_NO as purchaseOrderNo, INV.CURRENCY_PRICE as currencyPrice 
+             FROM CURRENCY C, INVOICE_LINE_ITEM INL, INVOICE INV
+             LEFT JOIN PERSON AS PN ON PN.PERSON_ID = INV.CUSTOMER_ID
+             LEFT JOIN INVOICE_PAYMENT INP ON INV.INVOICE_ID = INP.INVOICE_ID
+             LEFT JOIN EHF_VALIDATION_LOG EHF ON INV.INVOICE_ID = EHF.INVOICE_ID
+             WHERE INV.INVOICE_ID = INL.INVOICE_ID
+             AND C.CURRENCY_ID = INV.CURRENCY_ID
+             AND INL.PRODUCT_ID = :productId AND INV.IS_ACTIVE = 1
+			 AND INV.INVOICE_STATUS_ID IN
+                            (SELECT  INVOICE_STATUS_ID
+                FROM INVOICE_STATUS  WHERE INVOICE_STATUS_ID IN (:invoiceStatus))
+				
+			AND INV.INVOICE_STATUS_ID IN (:invoiceStatus)	
+             GROUP BY INV.INVOICE_ID ORDER BY INV.INVOICE_ID DESC
+           ]]>
