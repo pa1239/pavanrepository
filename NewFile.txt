@@ -149,3 +149,227 @@ Disclaimer : http://www.objectfrontier.com/maildisclaimer.html
 			AND INV.INVOICE_STATUS_ID IN (:invoiceStatus)	
              GROUP BY INV.INVOICE_ID ORDER BY INV.INVOICE_ID DESC
            ]]>
+	   
+	   
+	   
+	   
+	   
+	   
+	   <?xml version="1.0" encoding="UTF-8"?>
+<tree id="zerp">
+    <node id="1" key="home" name="Home" nameKey="lbl.home" iconCls="icon-home" link="/ums/dashboard.htm" acl="module.dashboard" angularLink="/dashboard" isCreate = "false"/>
+    <node id="2" key="invoice" name="Invoice" nameKey="lbl.invoice" iconCls="icon-invoice_dollar" configIconCls="icon-invoice_dollar" link="/ums/manageInvoice.htm" angularLink="/invoice" isCreate = "true" isConfiguration = "true" configurationLink="/invoiceConfig" createMenuLink = "/createInvoice"
+        acl="invoice.invoice.manage,config.currency-conversion.manage,config.payment-condition.manage,core.event-logs.manage">
+        <!-- <node id="21" name="Search Invoice" nameKey="lbl.searchinvoice" iconCls="icon-invoice_dollar"
+            link="javascript:Zerp.loadMCP('MainSearchInvoicePanel');" acl="invoice.invoice.manage" /> -->
+        <node name="Config" nameKey="lbl.config" iconCls="invoice-productgroup"/>
+        <node id="22" name="Currency" nameKey="lbl.currency"  cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainCurrencyConversionPanel');" acl="config.currency-conversion.manage" />
+        <node id="24" name="Payment Condition" nameKey="lbl.paymentcondition"  cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainPaymentConditionPanel');" acl="config.payment-condition.manage" />
+        <node id="25" name="Event Log" nameKey="lbl.eventLog" cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('ManageEventLogPanel');" acl="core.event-logs.manage" />
+        <node id="26" name="Rounding Settings" nameKey="lbl.roundingSettings"  cls="submenu-config-items"
+            link="" acl="config.rounding-settings.manage" />
+        <node id="27" name="Dimensions Settings" nameKey="lbl.dimensionsSettings"  cls="submenu-config-items"
+            link="" acl="config.invoice-dimensions-settings.manage" />
+    </node>
+    <node id="3" key="cusotmer" name="Customer" nameKey="lbl.customer" iconCls="icon-businessperson" link="/ums/manageCustomer.htm" angularLink="/customer" isConfiguration = "false"  isCreate = "true" createMenuLink = "/createCustomer"
+        acl="invoice.customer.manage">
+        <!-- <node id="31" name="Search Customer" nameKey="lbl.customer" iconCls="icon-businessperson"
+            link="javascript:Zerp.loadMCP('MainSearchCustomerPanel');" acl="invoice.customer.manage" /> -->
+    </node>
+    <node id="4" key="supplier" name="Search Supplier" nameKey="lbl.searchSupplier" iconCls="icon-delivery_truck" link="/invoice/manageSupplier.htm" isConfiguration = "false" angularLink="/supplier" isCreate = "true" createMenuLink = "/createSupplier" acl="invoice.supplier.manage">
+         <!-- <node id="41" name="Search Supplier" nameKey="lbl.searchSupplier" iconCls="icon-delivery_truck"
+            link="javascript:Zerp.loadMCP('MainSearchSupplierPanel');" acl="invoice.supplier.manage" /> -->
+    </node>
+    <node id="5" key="product" name="Product" nameKey="lbl.product" iconCls="icon-box_tall" configIconCls="icon-box_tall" link="/ums/manageProduct.htm"  angularLink="/listProducts" isConfiguration = "true" isCreate = "true" createMenuLink = "/createProduct"
+        configurationLink="/productConfig" acl="invoice.product.manage,config.product-group.manage,config.accounting-code.manage,config.unit.manage">
+        <!-- <node id="51" name="Search Product" nameKey="lbl.product" iconCls="icon-box_tall"
+            link="views/product.html" acl="invoice.customer.manage" /> -->
+        <node name="Config" nameKey="lbl.config" iconCls="invoice-productgroup"/>
+        <node name="Product Group" nameKey="lbl.productgroup"  cls="submenu-config-items"
+            link="" acl="config.product-group.manage" />
+        <node id="52" name="Accounting Code" nameKey="lbl.accountingcode"   cls="submenu-config-items"
+            link="views/currency.html" acl="config.accounting-code.manage" />
+        <node id="53" name="Unit" nameKey="lbl.unit"  cls="submenu-config-items"
+            link="" acl="config.unit.manage" />
+    </node>
+    <node id="6" key="inbound-invoice" name="Inbound Invoice" nameKey="lbl.inboundInvoice" iconCls="icon-invoice_dollar" configIconCls="icon-invoice_dollar" link="/invoice/manageInboundInvoice.htm"
+      angularLink="/inboundInvoice/1" isCreate = "true" createMenuLink = "/createInboundInvoice" isConfiguration = "true" configurationLink="/inboundInvoiceConfig"
+        acl="invoice.supplier.manage,invoice.inbound-invoice.manage,config.payment-type.manage,config.assets.manage,config.supplier-product.manage,config.ledgeraccount.manage,config.profile.manage,config.department.manage">
+        <!-- <node id="61" name="Search Invoice" nameKey="lbl.searchinboundinvoice" iconCls="invoice-search-inbound-invoice"
+            link="javascript:Zerp.loadMCP('MainTabInboundInvoicePanel');" acl="invoice.inbound-invoice.manage" /> -->
+        <node name="Config" nameKey="lbl.config" iconCls="invoice-productgroup"/>
+        <node id="65" name="Payment Type" nameKey="lbl.paymentType" cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainPaymentTypePanel');" acl="config.payment-type.manage" />
+         <node id="67" name="SupplierProduct" nameKey="lbl.supplierProduct" cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainSearchSupplierProductPanel');" acl="config.supplier-product.manage" />
+         <node id="70" name="DistributionTemplate" nameKey="lbl.distributionTemplate" cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainDistributionTemplatePanel');" acl="config.distributiontemplate.manage" />
+          <node id="75" name="ExternalUser" nameKey="lbl.ExternalUser" cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainExternalUserPanel');" acl="config.external-user.manage" />
+         <node id="168" name="Document Type" nameKey="lbl.documentType"  cls="submenu-config-items"
+            link="" acl="config.inbound-invoice-document-type.manage" />
+
+    </node>
+    <node id="11" key="payment-request" name="Payment Request" nameKey="lbl.bank" iconCls="icon-hand_money"
+    isCreate="true" createMenuLink="/createPaymentRequest" acl="inbound.invoice-payment.request" isConfiguration = "false">
+         <node id="111" name="Payment Request" nameKey="lbl.paymentRequest" iconCls="icon-credit_card"
+            link="/listPaymentRequest/2" angularLink="/listPaymentRequest" acl="inbound.invoice-payment.request" />
+            <node id="112" name="Search OCR" nameKey="lbl.searchocr" iconCls="icon-find_text"
+            link="/ocr" acl="invoice.ocr.manage" />
+       		<node id="113" name="Search Cremul" nameKey="lbl.searchcremul" iconCls="icon-documents_exchange"
+            link="/cremul" acl="invoice.cremul.manage" />
+    </node>
+    <node id="7" key="project" name="Project" nameKey="lbl.project" iconCls="icon-door_closed" configIconCls="icon-door_closed" angularLink="/listProjects" isCreate = "true" createMenuLink = "/createProject"
+      configurationLink="/projectConfig" acl="tts.project.manage, tts.timeentry.approve, config.inboundinvoice-product.manage" isConfiguration = "true">
+
+        <!-- <node id="71" name="Project" nameKey="lbl.project"  iconCls="icon-chart_gantt"
+            link="/listProjects" acl="tts.project.manage" />
+        <node id="72" name="Admin Finalize" nameKey="lbl.admin.finalize"  iconCls="icon-hand_thumb_up"
+            link="/finalize" acl="tts.timeentry.approve" /> -->
+        <node name="Config" nameKey="lbl.config" iconCls="invoice-productgroup"/>
+        <node id="73" name="InboundInvoiceProduct" nameKey="lbl.InboundInvoiceProduct" cls="submenu-config-items"
+            acl="config.inboundinvoice-product.manage" />
+    </node>
+    <node id="8" key="time-tracker" name="Time Tracker" nameKey="lbl.timetracker" iconCls="icon-stopwatch2" configIconCls="icon-stopwatch2" link="/ums/manageTimeTracker.htm" isCreate = "true" createMenuLink = "/userTimeEntry" isConfiguration = "true"
+        configurationLink="/timeTrackerConfig" acl="tts.timeentry.manage,tts.timeentry.user,tts.company-timeentry.report,tts.user-timeentry.report,
+        tts.timeentry.approve,tts.activity.assign,config.salary-code.manage,
+        config.timeentry-finalize-configuration.manage,tts.tta-status,tts.customer.finalize" >
+        <node id="81" name="Register Entries" nameKey="lbl.register.entries" iconCls="icon-calendar_52"
+            link="/registerEntries" acl="tts.timeentry.manage" />
+        <node id="82" name="Time Entries" nameKey="lbl.time.entries" iconCls="icon-window_key"
+            link="/adminTimeEntry" acl="tts.timeentry.user" />
+        <node id="83" name="Reports" nameKey="lbl.reports" iconCls="icon-chart_pie"
+            link="/timeTrackerReports" acl="tts.company-timeentry.report,tts.user-timeentry.report" />
+        <node id="84" name="Admin Finalize" nameKey="lbl.approve.time.entries"  iconCls="icon-ok"
+            link="/finalize/1" acl="tts.timeentry.approve" />
+        <node id="85" name="TTA Status" nameKey="lbl.tta.status"  iconCls="icon-elements_tree"
+            link="/ttaStatus" acl="tts.tta-status" />
+        <node id="86" name="Customer Finallize" nameKey="lbl.customerFinalize" iconCls="project-admin-finalize"
+            link="/finalize/2" acl="tts.customer.finalize"/>
+        <node name="Config" nameKey="lbl.config" iconCls="invoice-productgroup"/>
+        <node id="87" name="TimeEntry Settings" nameKey="lbl.timeentrysettings" cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainTimeEntrySettingsPanel');" acl="config.timeentry-finalize-configuration.manage" />
+        <node id="88" name="Assign Salary Code" nameKey="lbl.assingSalarycode" cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainAssignSalaryCodePanel');" acl="config.salary-code.manage" />
+        <node id="89" name="Salary Code" nameKey="lbl.salarycode" cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainSalaryCodeListPanel');" acl="config.salary-code.manage" />
+        <node id="90" name="AssignActivity" nameKey="lbl.assignactivity" cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainAssignActivityPanel');" acl="tts.activity.assign" />
+        <node id="74" name="NAActivitySettings" nameKey="lbl.NAActivitySettings" cls="submenu-config-items"
+            link="/projectConfig" acl="config.timeEntry-naActivitySettings.manage" />
+    </node>
+    <node id="12" key="attestation" name="Attestation" nameKey="lbl.attestation" iconCls="icon-rubber_stamp" configIconCls="icon-rubber_stamp" link="/invoice/manageAttestation.htm" angularLink="/attestation/1"
+      isCreate = "false" acl="invoice.attestation.manage" isConfiguration = "true" configurationLink="/attestationConfig">
+    	<!-- <node id="121" name="Search Attestation" nameKey="lbl.attestation"  iconCls="attestation-search-attestation"
+            link="javascript:Zerp.loadMCP('MainInboundInvoiceAttestationPanel');" acl="invoice.attestation.manage" /> -->
+        <node name="Config" nameKey="lbl.config" iconCls="core-eventLogs"/>
+        <node id="122" name="AssignActivity" nameKey="lbl.AttestedUser" cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('AttestedUserGridPanel');" acl="config.attested-user.manage" />
+        <node id="123" name="AttestationConfig" nameKey="lbl.simpleAttestaion" cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainAttestationConfigPanel');" acl="config.attestation-config.manage" />
+        <node id="124" name="AttestRemaindConfig" nameKey="lbl.attestRemaindConfig" cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainAttestationConfigPanel');" acl="config.attestationRemainder-config.manage" />
+   	</node>
+    <node id="9" key="payroll" name="Payroll" nameKey="lbl.payroll" iconCls="icon-hand_money" link="/payroll/manageEmployee.htm" angularLink="/payroll/manageEmployee.htm" isCreate = "false"
+        acl="payroll.employee.view,payroll.paycheck.view" isConfiguration = "false">
+        <node id="91" name="Employee" nameKey="lbl.employee"  iconCls="payroll-employee"
+            link="javascript:Zerp.loadMCP('MainEmployeePanel');" acl="payroll.employee.view" />
+        <node id="92" name="Reports" nameKey="lbl.reports"  iconCls="payroll-report"
+            link="javascript:Zerp.loadMCP('MainApproveTimeEntriesPanel');" acl="payroll.employee.view" />
+        <node id="93" name="Paycheck" nameKey="lbl.paycheck" iconCls="manage-paycheck"
+            link="javascript:Zerp.loadMCP('ManagePaycheckPanel');" acl="payroll.paycheck.view" />
+    </node>
+    <node id="10" key="reports" name="Reports" nameKey="lbl.reports" iconCls="icon-chart_pie" configIconCls="icon-chart_pie" link="/ums/manageReport.htm" angularLink="/manageReport/1" isCreate = "false"
+      acl="jasperReport.scheduling"  isConfiguration = "true" configurationLink="/reportConfig">
+    	<node name="Config" nameKey="lbl.config" iconCls="jasper-reportgroup" acl="jasperReport.scheduling" />
+    	<node id="101" name="Scheduling" nameKey="lbl.scheduling"  cls="submenu-config-items"
+    		  link="" acl="jasperReport.scheduling" />
+    	<!-- <node id="102" name="Workbook" nameKey="lbl.Workbook"  cls="submenu-config-items"
+    		  link=""  /> -->
+    </node>
+    <node id="14" key="salary" name="Salary" nameKey="lbl.salary" iconCls="icon-hand_money" configIconCls="icon-hand_money" link="" isConfiguration = "true"  isCreate = "false" createMenuLink = ""
+        configurationLink="/salaryConfig" acl="ums.salary.manage">
+        <node id="4571" name="User Info" nameKey="lbl.employee" iconCls="salary-entries"
+            link="/userSalaryInfo" acl="" />
+        <node id="4574" name="Employee Permission" nameKey="lbl.employeePermission" iconCls="salary-entries"
+        	link="/employeePermissions" acl="ums.salary.manage.overview" />
+		<node id="4568" name="SalaryOverView" nameKey="lbl.salaryOverView" iconCls="salary-entries"
+        	link="/salaryOverView" acl="ums.salary.manage.overview" />
+        <node id="4569" name="AltinnHistory" nameKey="lbl.altinnHistory" iconCls="salary-entries"
+        	link="/salaryRunHistory" acl="ums.salary.manage.history" />
+       	<node id="4570" name="SalaryRunReports" nameKey="lbl.salaryRunReports" iconCls="salary-entries"
+        	link="/salaryRunReports" acl="ums.salary.manage.reports" />
+       	<node id="4572" name="Bimonthly reports" nameKey="lbl.bimonthlyReports" iconCls="salary-entries"
+            link="/bimonthlyTaxSummary" acl="ums.salary.manage.reports" />
+       	<node id="4573" name="CompanyReports" nameKey="lbl.companyReports" iconCls="salary-entries"
+        	link="companyReports" acl="ums.salary.manage.reports" />
+        <node name="Config" nameKey="lbl.config" iconCls="jasper-reportgroup"/>
+        <node id="141" name="Salary Group" nameKey="lbl.salaryGroup"  cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainPaymentConditionPanel');" acl="ums.salary.config.manage" />
+            <!-- Will be moving to superAdmin in future Start -->
+       <!--  <node id="142" name="Municipality" nameKey="lbl.municipality"  cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainPaymentConditionPanel');" acl="ums.salary-group.manage" /> -->
+        <!-- Will be moving to superAdmin in future End -->
+        <node id="170" name="Salary Reporting Code" nameKey="lbl.salarycode" cls="submenu-config-items"
+            link="" acl="config.salary-reporting-code.manage" />
+		<node id="143" name="WorkPlace" nameKey="lbl.WorkPlace" cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainPaymentConditionPanel');" acl="ums.salary.config.manage" />
+		<node id="144" name="Salary Details" nameKey="lbl.salaryDetails"  cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainPaymentConditionPanel');" acl="ums.salary.config.manage" />
+        <!-- <node id="145" name="Salary Bank" nameKey="lbl.salaryBank"  cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainPaymentConditionPanel');" acl="ums.salary.config.manage" /> -->
+		<node id="146" name="Provision Account" nameKey="lbl.provisionAccount"  cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainPaymentConditionPanel');" acl="ums.salary.config.manage" />
+        <!-- Will be moving to superAdmin in future Start -->
+        <!-- <node id="147" name="Company Tax" nameKey="lbl.companyTax"  cls="submenu-config-items"
+         link="javascript:Zerp.loadMCP('MainPaymentConditionPanel');" acl="ums.salary-group.manage" /> -->
+       	<!-- Will be moving to superAdmin in future End -->
+       	<node id="165" name="Company Cars" nameKey="lbl.companyCars"  cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainPaymentConditionPanel');" acl="ums.salary.config.manage" />
+        <node id="166" name="Claim Collectors" nameKey="lbl.claimCollectors"  cls="submenu-config-items"
+             acl="ums.salary.config.manage" />
+        <node id="149" name="Yearly Constants" nameKey="lbl.yearlyConstants"  cls="submenu-config-items"
+         	link="javascript:Zerp.loadMCP('MainPaymentConditionPanel');" acl="ums.salary.config.manage" />
+       	<node id="148" name="Altinn Users" nameKey="lbl.altinnUser"  cls="submenu-config-items"
+         link="javascript:Zerp.loadMCP('MainPaymentConditionPanel');" acl="ums.salary.config.manage" />
+        <node id="151" name="Salary Dimension Config" nameKey="lbl.salaryDimensionConfig"  cls="submenu-config-items"
+         	link="javascript:Zerp.loadMCP('MainPaymentConditionPanel');" acl="ums.salary.config.manage" />
+        <node id="150" name="Altinn Event Log" nameKey="lbl.altinnEventLogs"  cls="submenu-config-items"
+         	link="javascript:Zerp.loadMCP('MainPaymentConditionPanel');" acl="ums.salary.config.manage" />
+		
+    </node>
+    <node id="15" key="salary-generator" name="Salary Generator" nameKey="lbl.salaryGenerator" iconCls="icon-moneybag_dollar" link=""
+        isConfiguration = "false" acl="salarygenerator.salary-generator.manage" isCreate = "false" createMenuLink = "">
+        <node id="141" name="Template" nameKey="lbl.draftToFinalize" iconCls="salary-generator-draft"
+            link="/salaryGenerator" acl="salarygenerator.salary-generator.manage" />
+        <node id="142" name="History" nameKey="lbl.history" iconCls="salary-generator-draft"
+            link="/salaryGeneratorHistory" acl="salarygenerator.salary-generator.manage" />
+    </node>
+    <!-- <node id="15" key="myProfile" name="myProfile" nameKey="lbl.myProfile" iconCls="icon-businessperson" configIconCls="icon-hand_money" isConfiguration = "false"  isCreate = "false" createMenuLink = ""
+    acl="">
+    </node> -->
+	<node id="16" key="Dimension" name="Dimension" nameKey="lbl.dimension" iconCls="icon-hand_paper" configIconCls="icon-hand_paper" link="/ums/manageCustomer.htm" isConfiguration = "true" configurationLink="/dimensionConfig" acl="">
+        <node name="Config" nameKey="lbl.config" iconCls="jasper-reportgroup" />
+        <node id="161" name="Assets" nameKey="lbl.assets" cls="dimension-config-items"
+            link="javascript:Zerp.loadMCP('MainAssetsPanel');" acl="config.assets.manage" />
+        <node id="162" name="Department" nameKey="lbl.department" cls="dimension-config-items" 
+            link="javascript:Zerp.loadMCP('MainDepartmentPanel');" acl="config.company.department" />
+		<node id="163" name="Dimension1" nameKey="lbl.dimension1" cls="dimensionFloor-items"
+            link="javascript:Zerp.loadMCP('DimensionPanel');" acl="config.dimension.manage" />
+        <node id="164" name="Dimension2" nameKey="lbl.dimension2" cls="dimensionFloor-items"
+            link="javascript:Zerp.loadMCP('DimensionPanel');" acl="config.dimension.manage" />
+    </node>
+    <node id="17" key="account" name="Account" nameKey="lbl.account" iconCls="icon-door_closed" configIconCls="icon-hand_card"
+        isConfiguration = "true" configurationLink="/ledgerAccountConfig" acl="">
+        <node name="Config" nameKey="lbl.config" iconCls="invoice-productgroup"/>
+        <node id="68" name="Account" nameKey="lbl.account" cls="submenu-config-items"
+            link="javascript:Zerp.loadMCP('MainInvoiceAccountPanel');" acl="config.ledgeraccount.manage"/>
+    </node>
+	<node id="18" key="ledger" name="Ledger" nameKey="lbl.ledger" iconCls="icon-book_open" configIconCls="icon-book_open"  isConfiguration="false"  isCreate="false" angularLink="/ledgerTransaction"
+        acl="">
+    </node>
+</tree>
+
