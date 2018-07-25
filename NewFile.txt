@@ -373,3 +373,6 @@ Disclaimer : http://www.objectfrontier.com/maildisclaimer.html
     </node>
 </tree>
 
+
+http://www.dreamsyssoft.com/blog/blog.php?/archives/7-Simple-REST-Web-Service-in-Java-with-Spring-and-CXF.html
+
