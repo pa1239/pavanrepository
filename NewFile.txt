@@ -376,3 +376,27 @@ Disclaimer : http://www.objectfrontier.com/maildisclaimer.html
 
 http://www.dreamsyssoft.com/blog/blog.php?/archives/7-Simple-REST-Web-Service-in-Java-with-Spring-and-CXF.html
 
+
+public static void setLogger() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			File loggingDir = new File(System.getProperty("user.dir") + "/logs/");
+			if (!loggingDir.exists() ) {
+				loggingDir.mkdirs();
+	            logger.info("Created logging directory !!");
+	        }
+			FileHandler handler = new FileHandler("logs/AuditFileMigration_" + 
+	        format.format(Calendar.getInstance().getTime()).toString() + ".log", true);
+			
+			SimpleFormatter formatter = new SimpleFormatter();
+			handler.setFormatter(formatter);
+			logger.addHandler(handler);
+			logger.setLevel(Level.ALL);
+			
+		} catch (Exception e) {
+			logger.severe("Problem occured while setting up logger");
+			logger.severe(ExceptionUtils.getFullStackTrace(e));
+			System.exit(0);
+		}
+	}
+
