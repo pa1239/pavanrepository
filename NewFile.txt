@@ -400,3 +400,139 @@ public static void setLogger() {
 		}
 	}
 
+StringBuffer selectionString =
+                new StringBuffer().append(
+                        " SELECT search.invoiceId AS invoiceId, search.invoiceNo AS invoiceNo, search.offerNo AS offerNo,").append(
+                        " search.creditNoteNo AS creditNoteNo, search.invoiceDate AS invoiceDate,").append(
+                        " search.invoiceDueDate AS invoiceDueDate, search.offerDueDate AS offerDueDate, ").append(
+                        " search.invoiceAmount AS invoiceAmount, search.paidAmount AS paidAmount, ").append(
+                        " search.invoiceAmountExcTax As invoiceAmountExcTax,").append(
+                        " search.statusId AS statusId, search.invoiceStatus AS invoiceStatus, ").append(
+                        " search.customerId AS customerId, search.customerName AS customerName, ").append(
+                        " search.labelId AS labelId, search.labelName AS labelName, ").append(
+                        " search.purchaseOrderNo AS purchaseOrderNo, ").append(
+                        " search.currencyId AS currencyId, search.currencyCode AS currencyCode, ").append(
+                        " search.draftNo AS draftNo, search.validationInfo AS validationInfo, ").append(
+                        " search.contactReferenceId AS contactReferenceId, ").append(
+                		" search.customerEmail as customerEmail, ").append(
+                        " search.yourReferenceId AS yourReferenceId, search.currencyPrice AS currencyPrice FROM ( ");
+
+        String groupBy = " GROUP BY INV.INVOICE_ID ) as search ";
+
+        String limit = " LIMIT :startIndex , :endIndex ";
+
+        String orderByInvoiceId = " ORDER BY search.invoiceId DESC ";
+
+        String orderByInvoiceNo = " ORDER BY search.invoiceNo DESC, search.invoiceId ";
+
+        String orderByInvoiceDate = " ORDER BY search.invoiceDate";
+
+        String orderByCustomerName = " ORDER BY search.customerName";
+
+        String orderByStatus = " ORDER BY search.invoiceStatus, search.invoiceId  ";
+
+        String orderByOfferNo = " ORDER BY search.offerNo ";
+
+        String orderByDraftNo = " ORDER BY search.draftNo ";
+
+        String orderByContactReference = " ORDER BY search.contactReferenceId ";
+
+        String orderByYourReference = " ORDER BY search.yourReferenceId ";
+
+        String orderByPONumber = " ORDER BY search.purchaseOrderNo ";
+
+        String orderByInvoiceDueDate = " ORDER BY search.invoiceDueDate ";
+
+        String orderByInvoiceAmount = " ORDER BY search.invoiceAmount ";
+
+        String orderByPaidAmount = " ORDER BY search.paidAmount ";
+
+        String orderBy = orderByInvoiceNo;
+        if (searchCriteriaDTO.getSortBy() != null) {
+
+            switch (searchCriteriaDTO.getSortBy()) {
+
+            case ORDER_BY_INVOICE_NO:
+                orderBy = orderByInvoiceNo;
+                break;
+            case ORDER_BY_INVOICE_DATE:
+                orderBy = orderByInvoiceDate;
+                break;
+            case ORDER_BY_CUSTOMER_NAME:
+                orderBy = orderByCustomerName;
+                break;
+            case ORDER_BY_STATUS:
+                orderBy = orderByStatus;
+                break;
+            case ORDER_BY_OFFER_NO:
+                orderBy = orderByOfferNo;
+                break;
+            case ORDER_BY_DRAFT_NO:
+                orderBy = orderByDraftNo;
+                break;
+            case ORDER_BY_CONTACT_REF:
+                orderBy = orderByContactReference;
+                break;
+            case ORDER_BY_YOUR_REF:
+                orderBy = orderByYourReference;
+                break;
+            case ORDER_BY_PO_NUMBER:
+                orderBy = orderByPONumber;
+                break;
+            case ORDER_BY_INVOICE_DUE_DATE:
+                orderBy = orderByInvoiceDueDate;
+                break;
+            case ORDER_BY_INVOICE_AMOUNT:
+                orderBy = orderByInvoiceAmount;
+                break;
+            case ORDER_BY_PAID_AMOUNT:
+                orderBy = orderByPaidAmount;
+                break;
+            default:
+                orderBy = orderByInvoiceId;
+                break;
+            }
+        }
+        String orderType;
+        if (searchCriteriaDTO.isOrderAsc()) {
+            orderType = " ASC ";
+        } else {
+            orderType = " DESC ";
+        }
+
+        StringBuffer closeSelectionString = new StringBuffer().append(groupBy).append(orderBy).append(orderType);
+
+        boolean includeLimit = true;
+        if (searchCriteriaDTO.getStartIndex() == null || searchCriteriaDTO.getStartIndex() < 0) {
+            includeLimit = false;
+        } else {
+            closeSelectionString.append(limit);
+        }
+
+        SQLQuery query =
+                generateSearchQuery(searchCriteriaDTO, selectionString, closeSelectionString,
+                        includeLimit);
+        query.addScalar("invoiceId", Hibernate.LONG);
+        query.addScalar("invoiceNo", Hibernate.INTEGER);
+        query.addScalar("offerNo", Hibernate.INTEGER);
+        query.addScalar("creditNoteNo", Hibernate.INTEGER);
+        query.addScalar("draftNo", Hibernate.INTEGER);
+        query.addScalar("invoiceDate", Hibernate.DATE);
+        query.addScalar("invoiceDueDate", Hibernate.DATE);
+        query.addScalar("invoiceAmount", Hibernate.DOUBLE);
+        query.addScalar("paidAmount", Hibernate.DOUBLE);
+        query.addScalar("invoiceAmountExcTax", Hibernate.DOUBLE);
+        query.addScalar("invoiceStatus", Hibernate.STRING);
+        query.addScalar("customerId", Hibernate.LONG);
+        query.addScalar("customerName", Hibernate.STRING);
+        query.addScalar("customerEmail", Hibernate.STRING);
+        query.addScalar("currencyId", Hibernate.INTEGER);
+        query.addScalar("currencyCode", Hibernate.STRING);
+        query.addScalar("validationInfo", Hibernate.STRING);
+        query.addScalar("purchaseOrderNo", Hibernate.STRING);
+        query.addScalar("contactReferenceId", Hibernate.STRING);
+        query.addScalar("yourReferenceId", Hibernate.STRING);
+        query.addScalar("currencyPrice", Hibernate.DOUBLE);
+
+        query.setResultTransformer(Transformers.aliasToBean(InvoiceSearchResultDTO.class));
+        return query.list();
