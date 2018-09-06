@@ -536,3 +536,10 @@ StringBuffer selectionString =
 
         query.setResultTransformer(Transformers.aliasToBean(InvoiceSearchResultDTO.class));
         return query.list();
+	
+	https://stackoverflow.com/questions/3937131/getting-result-set-into-dto-with-native-sql-query-in-hibernate
+	
+	
+	
+	
+	
