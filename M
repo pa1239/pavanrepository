@@ -28,3 +28,17 @@ NamedQuery --HQL
 6)
 
 
+Java : Good except Thread
+
+Hibernate: Average
+
+Web Services: validated the REST only - not good
+
+SQL Queries: Average
+
+DB Migration: not good
+
+Memory Management: Not aware
+
+angularJs: Not aware of it
+
