@@ -41,4 +41,148 @@ DB Migration: not good
 Memory Management: Not aware
 
 angularJs: Not aware of it
+==============================================
+@echo off
+rem Licensed to the Apache Software Foundation (ASF) under one or more
+rem contributor license agreements.  See the NOTICE file distributed with
+rem this work for additional information regarding copyright ownership.
+rem The ASF licenses this file to You under the Apache License, Version 2.0
+rem (the "License"); you may not use this file except in compliance with
+rem the License.  You may obtain a copy of the License at
+rem
+rem     http://www.apache.org/licenses/LICENSE-2.0
+rem
+rem Unless required by applicable law or agreed to in writing, software
+rem distributed under the License is distributed on an "AS IS" BASIS,
+rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+rem See the License for the specific language governing permissions and
+rem limitations under the License.
+
+if "%OS%" == "Windows_NT" setlocal
+rem ---------------------------------------------------------------------------
+rem Start script for the CATALINA Server
+rem
+rem $Id: startup.bat 895392 2010-01-03 14:02:31Z kkolinko $
+rem ---------------------------------------------------------------------------
+
+rem Guess CATALINA_HOME if not defined
+rem call env.bat
+set JAVA_HOME=D:/apps/jdk1.7.0
+set "JAVA_OPTS=%JAVA_OPTS% -Dfile.encoding=UTF-8 -Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=n -server -Xms502m -Xmx750m -XX:PermSize=32m -XX:MaxPermSize=256m -XX:NewSize=128m -XX:+UseParNewGC "
+
+set "CURRENT_DIR=%cd%"
+if not "%CATALINA_HOME%" == "" goto gotHome
+set "CATALINA_HOME=%CURRENT_DIR%"
+if exist "%CATALINA_HOME%\bin\catalina.bat" goto okHome
+cd ..
+set "CATALINA_HOME=%cd%"
+cd "%CURRENT_DIR%"
+:gotHome
+if exist "%CATALINA_HOME%\bin\catalina.bat" goto okHome
+echo The CATALINA_HOME environment variable is not defined correctly
+echo This environment variable is needed to run this program
+goto end
+:okHome
+
+set "EXECUTABLE=%CATALINA_HOME%\bin\catalina.bat"
+
+rem Check that target executable exists
+if exist "%EXECUTABLE%" goto okExec
+echo Cannot find "%EXECUTABLE%"
+echo This file is needed to run this program
+goto end
+:okExec
+
+rem Get remaining unshifted command line arguments and save them in the
+set CMD_LINE_ARGS=
+:setArgs
+if ""%1""=="""" goto doneSetArgs
+set CMD_LINE_ARGS=%CMD_LINE_ARGS% %1
+shift
+goto setArgs
+:doneSetArgs
+
+call "%EXECUTABLE%" start %CMD_LINE_ARGS%
+
+:end
+
+================================================================================================================
+
+
+Software Engineer with more than 3 years of experience in IT Industry
+Experience working in design, development, and implementation of software applications 
+Experience developing enterprise ERP and Health Care applications using Java technologies
+Experience using frameworks such as Spring and Hibernate
+Experience developing web services by using REST and SOAP
+Experience in MySQL database design and maintenance
+Experience in data modeling, creating tables, named queries and SQL creation
+Exposure in application integration, customization and data analysis
+Proficient in writing test cases and performing verification, validation and unit testing
+Experience working in Agile software development process
+Exposure in different phase of software life cycle including use case analysis, design, development and support
+
+
+
+Ability to work in a dynamic and fast-paced environment
+Ability to communicate and coordinate effectively with client
+Keen to learn new technologies and domains and quickly accommodate for timely needs
+
+
+
+Languages
+Java
+Frameworks
+Spring, Hibernate
+Databases
+MySQL, Oracle
+Web Related
+HTML
+Web Services
+SOAP, REST
+Version Control
+GIT, SVN
+Tools and Utilities
+Maven, Postman, SoapUI
+Server
+Apache Tomcat, J Boss
+Operating System
+Windows 7
+Domain Knowledge
+Healthcare, ERP
+
+
+Object Frontier Software
+Software Engineer
+Aug 2017
+Present
+Tata Consultancy Services
+Software Engineer
+Dec 2014
+Aug 2017
+
+
+
+
+Understand project scope and use cases
+Develop functionalities and technical components
+Develop customized features and rectify issues 
+Develop back-end using Java, Spring and Hibernate
+Responsible for service implementation
+Implement new features as for project requirement
+Perform web services using REST
+Work on exposing service code for web service
+worked on SQL queries creation as per  requirement 
+worked on MySQL DB as back end for storing data 
+working on fixing issues from production
+Perform unit testing and issue fixing
+
+
+
+he client is a provider of ERP system for small and medium business. The client initially had a standalone system to provide accounting solutions, we helped the client to rebuild a comprehensive, multi-tenant, cloud-based system and further added several modules to the existing system. As part of this enhancement, we migrated the platform using latest UI technologies to provide initiative UI and Internationalization support.
+
+
+The client is a leading hospital in UK. The project goal was to develop a web-based application to manage the hospital activities that are required for the patient and to maintain the hospital bills, doctor timings and to develop the invoices for the patient bill payments
+
+The client is from Saudi Arabia. The project goal to develop a fully specified application for the Vending machine. The main aim of the application is to sell products through Vending Machines located at various locations, which can be operated by the customers for their requirements usage
+
 
